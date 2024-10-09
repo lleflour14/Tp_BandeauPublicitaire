@@ -1,8 +1,21 @@
 package bandeau;
 
-public class BandeauVerrouillable extends Bandeau implements Runnable {
-    @Override
-    public void run() {
-        
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+public class BandeauVerrouillable extends Bandeau  {
+    private final Lock verrou = new ReentrantLock();
+
+
+  public void verrouille(){
+       verrou.lock();
     }
+
+
+
+    public void deverrouille(){
+        verrou.unlock();
+    }
+
 }
